@@ -1,24 +1,16 @@
-import React , {useEffect} from "react";
+import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 import "./css/styles.css";
 
 
-
-function Timer(props) {
-  useEffect(() => {
-    
-  }, []);
-
-
-  function TimeEnd(){
-     props.func();
-  }
-
-
+   
+function Timer() {
+  
   const renderTime = ({ remainingTime }) => {
+     
     if (remainingTime === 0) {
-      TimeEnd();
+      window.location.reload(false);
       return <div className="timer">Too lale...</div>;
     }
      
@@ -30,6 +22,9 @@ function Timer(props) {
       </div>
     );
   };
+
+  
+
   return (
     <>
     <h1>
@@ -44,11 +39,12 @@ function Timer(props) {
         onComplete={() => ({ shouldRepeat: true, delay: 1 })}
       >
         {renderTime}
+        
       </CountdownCircleTimer>
     </div>
-    
+   
   </>
   )
 }
 
-export default Timer
+export default Timer;

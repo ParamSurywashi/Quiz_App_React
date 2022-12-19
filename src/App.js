@@ -1,9 +1,10 @@
 
-import { useEffect, useState, useRef } from 'react';
+import {  useState, useRef } from 'react';
 import './App.css';
 import LocalBox from './LabelBox';
 import Operator from './Operator';
 import Timer from './Timer';
+
 
 function App() {
   const [num1, setNum1]=useState(0);
@@ -11,7 +12,6 @@ function App() {
   const [operator, setOperator]=useState('+');
   const [result, setResult]=useState("");
   const inputRef= useRef();
-
   
 function loadFunc(){
   inputRef.current.focus();
@@ -47,8 +47,7 @@ function loadFunc(){
   };
   
   function resetBtn(){
-    loadFunc();
-   // remainingTime=30;
+    window.location.reload(false);
   }
 
 
@@ -67,12 +66,12 @@ function loadFunc(){
         case '/':  resultValue= (number1 / number2);  break; 
         }
         resultValue = Math.floor(resultValue);
-      //alert(res+"     "+resultValue);
+    
       if(res == resultValue){
         setResult("Currect Answer");
         document.getElementById("msgText").style.color="green";
         document.getElementById("msgText").style.backgroundColor="#56ea56";
-    
+        setTimeout(()=>window.location.reload(false))
         
       }else{
         setResult("Wrong Answer");
@@ -94,27 +93,26 @@ function loadFunc(){
 
       
   return (
-<>
-<h1>Welcome to Maths Quiz</h1>
-<button onClick={()=>resetBtn()}>Reset</button>
-<div id="container">
-<LocalBox num1={num1} id="number1"/>
-<Operator operator={operator}/>
-<LocalBox num1={num2} id="number2"/>
-</div>
-<div className='res_container'>
-<input type="number" id="answer" inputMode='numeric' pattern="[0-9]*" ref={inputRef}/>
-</div>
-<div className='res_container'>
-<button id="btn" onClick={()=>calculate()}>Check</button> 
-<div id='WatchSpan'><Timer func={loadFunc} /></div>
-</div>
+    <>
+        <h1>Welcome to Maths Quiz</h1>
+        <button onClick={()=>resetBtn()}>Reset</button>
+            <div id="container">
+                  <LocalBox num1={num1} id="number1"/>
+                  <Operator operator={operator}/>
+                  <LocalBox num1={num2} id="number2"/>
+            </div>
+     <div className='res_container'>
+          <input type="number" id="answer" inputMode='numeric' pattern="[0-9]*" ref={inputRef}/>
+     </div>
+     <div className='res_container'>
+           <button id="btn" onClick={()=>calculate()}>Check</button> 
+           <div id='WatchSpan'><Timer func={loadFunc} /></div>
+     </div>
 
-<div className='res_container'>
-<span id="msgText">{result}</span>
-
-</div>
-</>
+     <div className='res_container'>
+      <span id="msgText">{result}</span>
+     </div>
+   </>
   );
 }
 
