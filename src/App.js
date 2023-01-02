@@ -12,6 +12,8 @@ function App() {
   const [operator, setOperator]=useState('+');
   const [result, setResult]=useState("");
   const inputRef= useRef();
+
+  
   
 function loadFunc(){
   inputRef.current.focus();
@@ -47,7 +49,10 @@ function loadFunc(){
   };
   
   function resetBtn(){
-    window.location.reload(false);
+    //window.location.reload(false);
+    loadFunc();
+
+    
   }
 
 
@@ -71,7 +76,7 @@ function loadFunc(){
         setResult("Currect Answer");
         document.getElementById("msgText").style.color="green";
         document.getElementById("msgText").style.backgroundColor="#56ea56";
-        setTimeout(()=>window.location.reload(false))
+        setTimeout(()=>window.location.reload(false), 1000)
         
       }else{
         setResult("Wrong Answer");
@@ -106,7 +111,7 @@ function loadFunc(){
      </div>
      <div className='res_container'>
            <button id="btn" onClick={()=>calculate()}>Check</button> 
-           <div id='WatchSpan'><Timer func={loadFunc} /></div>
+           <div id='WatchSpan'>    <Timer func={loadFunc}  /> </div>
      </div>
 
      <div className='res_container'>

@@ -5,10 +5,10 @@ import "./css/styles.css";
 
 
    
-function Timer() {
-  
-  const renderTime = ({ remainingTime }) => {
-     
+function Timer(props) {
+
+ const renderTime = ({ remainingTime }) => {
+    
     if (remainingTime === 0) {
       window.location.reload(false);
       return <div className="timer">Too lale...</div>;
@@ -38,6 +38,7 @@ function Timer() {
         colorsTime={[23, 15, 10,7,4,2, 0]}
         onComplete={() => ({ shouldRepeat: true, delay: 1 })}
       >
+        
         {renderTime}
         
       </CountdownCircleTimer>
