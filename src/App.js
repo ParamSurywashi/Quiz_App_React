@@ -1,9 +1,9 @@
 
 import {  useState, useRef } from 'react';
-import './App.css';
-import LocalBox from './LabelBox';
-import Operator from './Operator';
-import Timer from './Timer';
+import './css/App.css';
+import LabelBox from './Components/LabelBox';
+import Operator from './Components/Operator';
+import Timer from './Components/Timer';
 
 
 function App() {
@@ -102,9 +102,9 @@ function loadFunc(){
         <h1>Welcome to Maths Quiz</h1>
         <button onClick={()=>resetBtn()}>Reset</button>
             <div id="container">
-                  <LocalBox num1={num1} id="number1"/>
+                  <LabelBox num1={num1} id="number1"/>
                   <Operator operator={operator}/>
-                  <LocalBox num1={num2} id="number2"/>
+                  <LabelBox num1={num2} id="number2"/>
             </div>
      <div className='res_container'>
           <input type="number" id="answer" inputMode='numeric' pattern="[0-9]*" ref={inputRef}/>

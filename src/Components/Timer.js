@@ -1,7 +1,6 @@
 import React from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-
-import "./css/styles.css";
+import '../css/styles.css';
 
 
    
